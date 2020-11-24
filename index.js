@@ -110,6 +110,8 @@ apiRouter.post("/location", function (req, res) {
   const userRequest = req.body.userRequest;
   const blockId = userRequest.block.id;
 
+
+  src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4fd6f502357b59ad93e1ef4fe9b139e9";
   var staticMapContainer = document.getElementById("staticMap"), // 이미지 지도를 표시할 div
     staticMapOption = {
       center: new kakao.maps.LatLng(36.60918555652231,127.28552189796417), // 이미지 지도의 중심좌표
