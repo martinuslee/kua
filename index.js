@@ -46,7 +46,8 @@ apiRouter.post("/menu", function (req, res) {
               {
                 action: "webLink",
                 label: "Link Button",
-		webLinkUrl: "https://sejong.korea.ac.kr/campuslife/facilities/dining/weeklymenu"
+                webLinkUrl:
+                  "https://sejong.korea.ac.kr/campuslife/facilities/dining/weeklymenu",
               },
             ],
           },
@@ -71,7 +72,8 @@ apiRouter.post("/diagnosis", function (req, res) {
               {
                 action: "webLink",
                 label: "Link Button",
-		webLinkUrl: "https://docs.google.com/forms/d/e/1FAIpQLSf0oC7eK8KmBLXJfITgk7ZJN-aB2jUcN6aBUcaLNhgpJQGYlw/viewform"
+                webLinkUrl:
+                  "https://docs.google.com/forms/d/e/1FAIpQLSf0oC7eK8KmBLXJfITgk7ZJN-aB2jUcN6aBUcaLNhgpJQGYlw/viewform",
               },
             ],
           },
@@ -94,7 +96,7 @@ apiRouter.post("/searchBook", function (req, res) {
               {
                 action: "webLink",
                 label: "Link Button",
-		webLinkUrl: "https://libs.korea.ac.kr/"
+                webLinkUrl: "https://libs.korea.ac.kr/",
               },
             ],
           },
@@ -105,7 +107,6 @@ apiRouter.post("/searchBook", function (req, res) {
 });
 
 apiRouter.post("/location", function (req, res) {
-
   const userRequest = req.body.userRequest;
   const blockId = userRequest.block.id;
 
@@ -120,7 +121,8 @@ apiRouter.post("/location", function (req, res) {
               {
                 action: "webLink",
                 label: "클릭해서 바로 길 찾기",
-		            webLinkUrl: "https://map.kakao.com/link/map/농심국제관,36.60918555652231,127.28552189796417"
+                webLinkUrl:
+                  "https://map.kakao.com/link/map/농심국제관,36.60918555652231,127.28552189796417",
               },
             ],
           },
@@ -130,7 +132,6 @@ apiRouter.post("/location", function (req, res) {
   });
 });
 apiRouter.post("/restaurant", function (req, res) {
-
   const userRequest = req.body.userRequest;
   const blockId = userRequest.block.id;
 
@@ -141,12 +142,15 @@ apiRouter.post("/restaurant", function (req, res) {
         {
           basicCard: {
             title: "학교 주변 맛집 정보를 보여드릴게요",
-            imageUrl: "https://www.sejong.go.kr/images/kor/sub01/sub010301_img01.jpg",
+            thumbnail: {
+              imageUrl:
+                "https://www.sejong.go.kr/images/kor/sub01/sub010301_img01.jpg",
+            },
             buttons: [
               {
                 action: "webLink",
                 label: "클릭해서 바로 맛집 찾기",
-		            webLinkUrl: "https://map.kakao.com/link/search/맛집"
+                webLinkUrl: "https://map.kakao.com/link/search/맛집",
               },
             ],
           },
