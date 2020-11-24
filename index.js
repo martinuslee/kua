@@ -115,11 +115,11 @@ apiRouter.post("/location", function (req, res) {
       outputs: [
         {
           basicCard: {
-            title: "",
+            title: "수업에 늦지않게 길찾기를 도와드릴게요!",
             buttons: [
               {
                 action: "webLink",
-                label: "바로 길 찾기",
+                label: "클릭해서 바로 길 찾기",
 		            webLinkUrl: "https://map.kakao.com/link/map/농심국제관,36.60918555652231,127.28552189796417"
               },
             ],
