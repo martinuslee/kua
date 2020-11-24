@@ -144,7 +144,7 @@ apiRouter.post("/restaurant", function (req, res) {
             title: "학교 주변 맛집 정보를 보여드릴게요",
             thumbnail: {
               imageUrl:
-                "https://www.sejong.go.kr/images/kor/sub01/sub010301_img01.jpg",
+                "https://t1.daumcdn.net/thumb/R720x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/9Kii/image/X1zWJ7b_Qlk7H96UIlwq99FrKN8.png",
             },
             buttons: [
               {
