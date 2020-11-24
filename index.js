@@ -81,6 +81,29 @@ apiRouter.post("/diagnosis", function (req, res) {
   });
 });
 
+apiRouter.post("/searchBook", function (req, res) {
+  return res.send({
+    version: "2.0",
+    template: {
+      outputs: [
+        {
+          basicCard: {
+            title: "학술정보원 도서검색",
+            description: "팝업창에서 도서를 검색해주세요",
+            buttons: [
+              {
+                action: "webLink",
+                label: "Link Button",
+		webLinkUrl: "https://libs.korea.ac.kr/"
+              },
+            ],
+          },
+        },
+      ],
+    },
+  });
+});
+
 app.post("/blockId", function (req, res) {
   const userRequest = req.body.userRequest;
   const blockId = userRequest.block.id;
