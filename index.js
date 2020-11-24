@@ -129,6 +129,31 @@ apiRouter.post("/location", function (req, res) {
     },
   });
 });
+apiRouter.post("/restaurant", function (req, res) {
+
+  const userRequest = req.body.userRequest;
+  const blockId = userRequest.block.id;
+
+  return res.send({
+    version: "2.0",
+    template: {
+      outputs: [
+        {
+          basicCard: {
+            title: "학교 주변 맛집 정보를 보여드릴게요",
+            buttons: [
+              {
+                action: "webLink",
+                label: "클릭해서 바로 맛집 찾기",
+		            webLinkUrl: "https://map.kakao.com/link/search/맛집"
+              },
+            ],
+          },
+        },
+      ],
+    },
+  });
+});
 
 app.post("/blockId", function (req, res) {
   const userRequest = req.body.userRequest;
