@@ -141,7 +141,7 @@ apiRouter.post("/restaurant", function (req, res) {
         {
           basicCard: {
             title: "학교 주변 맛집 정보를 보여드릴게요",
-            imageUrl: "https://www.urbanbrush.net/web/wp-content/uploads/edd/2018/08/urbanbrush-20180822024847414051.png",
+            imageUrl: "https://www.sejong.go.kr/images/kor/sub01/sub010301_img01.jpg",
             buttons: [
               {
                 action: "webLink",
