@@ -137,7 +137,7 @@ apiRouter.post("/reserveSeat", function (req, res) {
               {
                 action: "webLink",
                 label: "Link Button",
-                webLinkUrl: "https://libs.korea.ac.kr:81/",
+                webLinkUrl: "http://libs.korea.ac.kr:81/",
               },
             ],
           },
