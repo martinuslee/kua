@@ -104,6 +104,32 @@ apiRouter.post("/searchBook", function (req, res) {
   });
 });
 
+apiRouter.post("/location", function (req, res) {
+
+  const userRequest = req.body.userRequest;
+  const blockId = userRequest.block.id;
+
+  return res.send({
+    version: "2.0",
+    template: {
+      outputs: [
+        {
+          basicCard: {
+            title: "",
+            buttons: [
+              {
+                action: "webLink",
+                label: "바로 길 찾기",
+		            webLinkUrl: "https://map.kakao.com/link/map/농심국제관,36.60918555652231,127.28552189796417"
+              },
+            ],
+          },
+        },
+      ],
+    },
+  });
+});
+
 app.post("/blockId", function (req, res) {
   const userRequest = req.body.userRequest;
   const blockId = userRequest.block.id;
