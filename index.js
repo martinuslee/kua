@@ -8,6 +8,11 @@ const apiRouter = express.Router();
 app.use(logger("dev", {}));
 app.use(bodyParser.json());
 app.use("/api", apiRouter);
+
+app.listen(3000, function () {
+  console.log("Example skill server listening on port 3000!");
+});
+
 //
 apiRouter.post("/sayHello", function (req, res) {
   const responseBody = {
@@ -26,27 +31,6 @@ apiRouter.post("/sayHello", function (req, res) {
   res.status(200).send(responseBody);
 });
 
-apiRouter.post("/showHello", function (req, res) {
-  console.log(req.body);
-
-  const responseBody = {
-    version: "2.0",
-    template: {
-      outputs: [
-        {
-          simpleImage: {
-            imageUrl:
-              "https://t1.daumcdn.net/friends/prod/category/M001_friends_ryan2.jpg",
-            altText: "hello I'm Ryan",
-          },
-        },
-      ],
-    },
-  };
-
-  res.status(200).send(responseBody);
-});
-
 apiRouter.post("/menu", function (req, res) {
   console.log(req.body);
 
@@ -55,10 +39,16 @@ apiRouter.post("/menu", function (req, res) {
     template: {
       outputs: [
         {
-          simpleImage: {
-            imageUrl:
-              "https://sejong.korea.ac.kr/dext5editordata/20201116_112917917_91726.jpg",
-            altText: "hello I'm Ryan",
+          basicCard: {
+            title: "금주의 교직원 식당 식단표입니다",
+            description: "웹사이트에서 교직원식당 주간 메뉴를 클릭해주세요!",
+            buttons: [
+              {
+                action: "webLink",
+                label: "Link Button",
+		webLinkUrl: "https://sejong.korea.ac.kr/campuslife/facilities/dining/weeklymenu"
+              },
+            ],
           },
         },
       ],
@@ -108,8 +98,4 @@ app.post("/blockId", function (req, res) {
       ],
     },
   });
-});
-
-app.listen(3000, function () {
-  console.log("Example skill server listening on port 3000!");
 });
