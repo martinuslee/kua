@@ -178,7 +178,7 @@ apiRouter.post("/restaurant", function (req, res) {
               {
                 action: "webLink",
                 label: "클릭해서 바로 맛집 찾기",
-                webLinkUrl: "https://map.kakao.com/link/search/맛집",
+                webLinkUrl: "https://map.kakao.com/link/search/고려대세종주변맛집",
               },
             ],
           },
@@ -191,6 +191,27 @@ apiRouter.post("/restaurant", function (req, res) {
 app.post("/blockId", function (req, res) {
   const userRequest = req.body.userRequest;
   const blockId = userRequest.block.id;
+
+  return res.send({
+    version: "2.0",
+    template: {
+      outputs: [
+        {
+          basicCard: {
+            title: "블록ID 입니다",
+            description: blockId,
+          },
+        },
+      ],
+    },
+  });
+});
+
+
+app.post("/blockId", function (req, res) {
+  const userRequest = req.body.userRequest;
+  const blockId = userRequest.block.id;
+  const userTime = params.time;  
 
   return res.send({
     version: "2.0",
