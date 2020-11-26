@@ -13,24 +13,6 @@ app.listen(3000, function () {
   console.log("Example skill server listening on port 3000!");
 });
 
-//
-apiRouter.post("/sayHello", function (req, res) {
-  const responseBody = {
-    version: "2.0",
-    template: {
-      outputs: [
-        {
-          simpleText: {
-            text: "hello I'm Ryan",
-          },
-        },
-      ],
-    },
-  };
-
-  res.status(200).send(responseBody);
-});
-
 apiRouter.post("/menu", function (req, res) {
   console.log(req.body);
 
@@ -75,14 +57,14 @@ apiRouter.post("/diagnosis", function (req, res) {
             buttons: [
               {
                 action: "webLink",
-                label: "구글 링크 바로가기(Google from Link)",
+                label: "구글 링크(Google Link)",
                 webLinkUrl:
                   "https://docs.google.com/forms/d/e/1FAIpQLSf0oC7eK8KmBLXJfITgk7ZJN-aB2jUcN6aBUcaLNhgpJQGYlw/viewform",
               },
 
               {
                 action: "phone",
-                label: "선별진료소 전화하기(Call Emergence)",
+                label: "선별진료소 전화",
                 phoneNumber: "044-860-1038",
               },
             ],
@@ -149,18 +131,7 @@ apiRouter.post("/reserveSeat", function (req, res) {
 
 apiRouter.post("/location", function (req, res) {
   const userRequest = req.body.userRequest;
-  const blockId = userRequest.block.id;
-
-  src =
-    "//dapi.kakao.com/v2/maps/sdk.js?appkey=4fd6f502357b59ad93e1ef4fe9b139e9";
-  var staticMapContainer = document.getElementById("staticMap"), // 이미지 지도를 표시할 div
-    staticMapOption = {
-      center: new kakao.maps.LatLng(36.60918555652231, 127.28552189796417), // 이미지 지도의 중심좌표
-      level: 3, // 이미지 지도의 확대 레벨
-    };
-
-  // 이미지 지도를 표시할 div와 옵션으로 이미지 지도를 생성합니다
-  var staticMap = new kakao.maps.StaticMap(staticMapContainer, staticMapOption);
+  const userFavorite = userRequest.utterance; // 입력 발화
 
   return res.send({
     version: "2.0",
@@ -186,6 +157,7 @@ apiRouter.post("/location", function (req, res) {
     },
   });
 });
+
 apiRouter.post("/restaurant", function (req, res) {
   const userRequest = req.body.userRequest;
   const blockId = userRequest.block.id;
@@ -205,7 +177,62 @@ apiRouter.post("/restaurant", function (req, res) {
               {
                 action: "webLink",
                 label: "클릭해서 바로 맛집 찾기",
-                webLinkUrl: "https://map.kakao.com/link/search/고려대세종주변맛집",
+                webLinkUrl:
+                  "https://map.kakao.com/link/search/고려대세종주변맛집",
+              },
+            ],
+          },
+        },
+      ],
+    },
+  });
+});
+
+apiRouter.post("/randomMenu", function (req, res) {
+  var rand2 = Math.floor(Math.random() * 4);
+  
+  var Menutemplate = {
+    korean: "한식",
+    chinese: "중식",
+    western: "양식",
+    japanese: "일식",
+  };
+
+  switch (rand2) {
+    case 1:
+      var msg = "오늘은 집밥같은 한식이 어떨까요?";
+      var choice = "https://map.kakao.com/link/search/고려대세종주변한식";
+      break;
+    case 2:
+      var msg = "오늘은 오랜만에 일식이 어떨까요?";
+      var choice = "https://map.kakao.com/link/search/고려대세종주변일식";
+      break;
+    case 3:
+      var msg = "오늘은 느낌있게 양식이 어떨까요?";
+      var choice = "https://map.kakao.com/link/search/고려대세종주변양식";
+      break;
+    case 4:
+      var msg = "짜증날땐 짜장면? 오늘은 중식이 어떨까요?";
+      var choice = "https://map.kakao.com/link/search/고려대세종주변중식";
+      break;
+  }
+
+  return res.send({
+    version: "2.0",
+    template: {
+      outputs: [
+        {
+          basicCard: {
+            title: msg,
+            thumbnail: {
+              imageUrl:
+                "https://t1.daumcdn.net/thumb/R720x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/9Kii/image/X1zWJ7b_Qlk7H96UIlwq99FrKN8.png",
+            },
+            buttons: [
+              {
+                action: "webLink",
+                label: "클릭해서 바로 맛집 찾기",
+                webLinkUrl: choice,
               },
             ],
           },
