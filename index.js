@@ -199,19 +199,19 @@ apiRouter.post("/randomMenu", function (req, res) {
   };
 
   switch (rand2) {
-    case 1:
+    case 0:
       var msg = "오늘은 집밥같은 한식이 어떨까요?";
       var choice = "https://map.kakao.com/link/search/고려대세종주변한식";
       break;
-    case 2:
+    case 1:
       var msg = "오늘은 오랜만에 일식이 어떨까요?";
       var choice = "https://map.kakao.com/link/search/고려대세종주변일식";
       break;
-    case 3:
+    case 2:
       var msg = "오늘은 느낌있게 양식이 어떨까요?";
       var choice = "https://map.kakao.com/link/search/고려대세종주변양식";
       break;
-    case 4:
+    case 3:
       var msg = "짜증날땐 짜장면? 오늘은 중식이 어떨까요?";
       var choice = "https://map.kakao.com/link/search/고려대세종주변중식";
       break;
