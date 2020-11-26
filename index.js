@@ -57,17 +57,19 @@ apiRouter.post("/diagnosis", function (req, res) {
             buttons: [
               {
                 action: "webLink",
-                label: "구글 링크(Google Link)",
+                label: "구글 링크(Link)",
                 webLinkUrl:
                   "https://docs.google.com/forms/d/e/1FAIpQLSf0oC7eK8KmBLXJfITgk7ZJN-aB2jUcN6aBUcaLNhgpJQGYlw/viewform",
               },
-
               {
                 action: "phone",
                 label: "선별진료소 전화",
                 phoneNumber: "044-860-1038",
               },
             ],
+            simpleText: {
+              text: "구글 링크 폼을 캡처후 채팅방에 사진을 올릴 수 있어요!",
+            },
           },
         },
       ],
@@ -129,9 +131,16 @@ apiRouter.post("/reserveSeat", function (req, res) {
   });
 });
 
+var location = {
+  농심국제관:
+    "https://map.kakao.com/link/map/농심국제관,36.60918555652231,127.28552189796417",
+  학술정보원:
+    "https://map.kakao.com/link/map/학술정보원,36.61004854502758,127.28714058017081",
+};
+
 apiRouter.post("/location", function (req, res) {
   const userRequest = req.body.userRequest;
-  const userFavorite = userRequest.utterance; // 입력 발화
+  const userLocation = userRequest.utterance; // 입력 발화
 
   return res.send({
     version: "2.0",
@@ -139,16 +148,15 @@ apiRouter.post("/location", function (req, res) {
       outputs: [
         {
           basicCard: {
-            title: "수업에 늦지않게 길찾기를 도와드릴게요!",
+            title: "카카오맵을 통해 길찾기를 도와드릴게요!",
             thumbnail: {
-              imageUrl: staticMap,
+              imageUrl: "",
             },
             buttons: [
               {
                 action: "webLink",
                 label: "클릭해서 바로 길 찾기",
-                webLinkUrl:
-                  "https://map.kakao.com/link/map/농심국제관,36.60918555652231,127.28552189796417",
+                webLinkUrl: "https://map.kakao.com/link/map/농심국제관,36.60918555652231,127.28552189796417",
               },
             ],
           },
@@ -159,9 +167,7 @@ apiRouter.post("/location", function (req, res) {
 });
 
 apiRouter.post("/restaurant", function (req, res) {
-  const userRequest = req.body.userRequest;
-  const blockId = userRequest.block.id;
-
+  
   return res.send({
     version: "2.0",
     template: {
@@ -190,33 +196,30 @@ apiRouter.post("/restaurant", function (req, res) {
 
 apiRouter.post("/randomMenu", function (req, res) {
   var rand2 = Math.floor(Math.random() * 4);
-  
-  var Menutemplate = {
-    korean: "한식",
-    chinese: "중식",
-    western: "양식",
-    japanese: "일식",
-  };
 
   switch (rand2) {
     case 0:
       var msg = "오늘은 집밥같은 한식이 어떨까요?";
-      var image = "https://cdn.crowdpic.net/list-thumb/thumb_l_153BEE879D34315BF94C70E7ABEDBA50.jpg";
+      var image =
+        "https://cdn.crowdpic.net/list-thumb/thumb_l_153BEE879D34315BF94C70E7ABEDBA50.jpg";
       var choice = "https://map.kakao.com/link/search/고려대세종주변한식";
       break;
     case 1:
       var msg = "오늘은 오랜만에 일식이 어떨까요?";
-      var image="https://cdn.crowdpic.net/list-thumb/thumb_l_5DD61F29C1FA75CE55668E071EF079E7.jpg";
+      var image =
+        "https://cdn.crowdpic.net/list-thumb/thumb_l_5DD61F29C1FA75CE55668E071EF079E7.jpg";
       var choice = "https://map.kakao.com/link/search/고려대세종주변일식";
       break;
     case 2:
       var msg = "오늘은 느낌있게 양식이 어떨까요?";
-      var image = "https://png.pngtree.com/element_our/20190603/ourlarge/pngtree-noodle-food-cartoon-illustration-image_1435987.jpg";
+      var image =
+        "https://png.pngtree.com/element_our/20190603/ourlarge/pngtree-noodle-food-cartoon-illustration-image_1435987.jpg";
       var choice = "https://map.kakao.com/link/search/고려대세종주변양식";
       break;
     case 3:
       var msg = "짜증날땐 짜장면? 오늘은 중식이 어떨까요?";
-      var image = "https://cdn.crowdpic.net/list-thumb/thumb_l_3D1036AEC54AF816BD6EF1221E127C92.jpg";
+      var image =
+        "https://cdn.crowdpic.net/list-thumb/thumb_l_3D1036AEC54AF816BD6EF1221E127C92.jpg";
       var choice = "https://map.kakao.com/link/search/고려대세종주변중식";
       break;
   }
@@ -229,8 +232,7 @@ apiRouter.post("/randomMenu", function (req, res) {
           basicCard: {
             title: msg,
             thumbnail: {
-              imageUrl:
-                  image,
+              imageUrl: image,
             },
             buttons: [
               {
@@ -239,25 +241,6 @@ apiRouter.post("/randomMenu", function (req, res) {
                 webLinkUrl: choice,
               },
             ],
-          },
-        },
-      ],
-    },
-  });
-});
-
-app.post("/blockId", function (req, res) {
-  const userRequest = req.body.userRequest;
-  const blockId = userRequest.block.id;
-
-  return res.send({
-    version: "2.0",
-    template: {
-      outputs: [
-        {
-          basicCard: {
-            title: "블록ID 입니다",
-            description: blockId,
           },
         },
       ],
