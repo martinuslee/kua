@@ -216,7 +216,7 @@ apiRouter.post("/randomMenu", function (req, res) {
       break;
     case 3:
       var msg = "짜증날땐 짜장면? 오늘은 중식이 어떨까요?";
-      var image = "https://cdn.crowdpic.net/list-thumb/thumb_l_3D1036AEC54AF816BD6EF1221E127C92.jpg",
+      var image = "https://cdn.crowdpic.net/list-thumb/thumb_l_3D1036AEC54AF816BD6EF1221E127C92.jpg";
       var choice = "https://map.kakao.com/link/search/고려대세종주변중식";
       break;
   }
