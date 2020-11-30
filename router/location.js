@@ -17,9 +17,9 @@ var location = {
     console.log(question);
     const Action = req.body.action;
     const where = Action.params
-    const whereObj = JSON.parse(where).sys_building;
+   
     console.log(where);
-    console.log(whereObj);
+    
 
     return res.send({
       version: "2.0",
