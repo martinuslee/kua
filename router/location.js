@@ -10,13 +10,13 @@ var location = {
   };
   //http://3.35.56.248:3000/api/location
   apiRouter.post("/location", function (req, res) {
-    const userRequest = req.body.userRequest;
-    const userLocation = userRequest.utterance; // 입력 발화
-    const userAction = req.body.action;
-    const locationStr = userAction.params;
-    const locationObj = JSON.parse(sys_building);
-  
-    console.log(locationObj);
+    
+    const question = req.body.userRequest.utterance; // 입력 발화
+    const userAction = req.body.action.params;
+
+
+    console.log(question);
+    console.log(userAction);
 
     return res.send({
       version: "2.0",
