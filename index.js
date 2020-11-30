@@ -7,7 +7,7 @@ const userDiagnosis = require('./router/diagnosis');
 const userBook = require('./router/searchBook');
 const userEat = require('./router/restaurant');
 const userReserve = require('./router/reserveSeat');
-const userLocatoin = require('./router/location');
+const userLocation = require('./router/location');
 const randomMenu = require('./router/randomMenu');
 
 
@@ -18,7 +18,7 @@ app.use("/api", userDiagnosis);
 app.use("/api", userBook);
 app.use("/api", userEat);
 app.use("/api", userReserve);
-app.use("/api", userLocatoin);
+app.use("/api", userLocation);
 app.use("/api", randomMenu);
 
 

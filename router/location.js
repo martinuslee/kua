@@ -8,11 +8,15 @@ var location = {
     학술정보원:
       "https://map.kakao.com/link/map/학술정보원,36.61004854502758,127.28714058017081",
   };
-  
+  //http://3.35.56.248:3000/api/location
   apiRouter.post("/location", function (req, res) {
     const userRequest = req.body.userRequest;
     const userLocation = userRequest.utterance; // 입력 발화
-  
+    const userAction = req.body.action;
+    const locationStr = userAction.params;
+    const locationObj = JSON.parse(locationStr);
+    console.log(locationObj.sys_building);
+
     return res.send({
       version: "2.0",
       template: {
