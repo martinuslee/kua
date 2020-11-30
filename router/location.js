@@ -28,16 +28,19 @@ const apiRouter = express.Router();
     const where = Action.params.sys_building;
     // console.log(typeof(where));
     // console.log(where);
-
+    
     switch(where){
       case nongshim:
         maplink = "https://map.kakao.com/link/map/농심국제관,36.60918555652231,127.28552189796417"
+        mapName = nongshim;    
         break;
       case library:
         maplink = "https://map.kakao.com/link/map/학술정보원,36.61004854502758,127.28714058017081"
+        mapName = library;
         break;
       default:
         maplink="https://map.kakao.com"
+        mapName = "default";
         break;
     }
 
@@ -49,7 +52,7 @@ const apiRouter = express.Router();
         outputs: [
           {
             basicCard: {
-              title: "카카오맵을 통해 길찾기를 도와드릴게요!",
+              title: "카카오맵을 통해" + mapName+"까지 길찾기를 도와드릴게요!",
               thumbnail: {
                 imageUrl: "",
               },
