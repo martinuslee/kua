@@ -27,7 +27,7 @@ const apiRouter = express.Router();
     const Action = req.body.action;
     const where = Action.params.sys_building;
     // console.log(typeof(where));
-    // console.log(where);
+    console.log(where);
     
     switch(where){
       case nongshim:
