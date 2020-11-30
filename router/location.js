@@ -1,3 +1,4 @@
+const { json } = require("body-parser");
 const express = require("express");
 const apiRouter = express.Router();
 
@@ -12,11 +13,9 @@ var location = {
   apiRouter.post("/location", function (req, res) {
     
     const question = req.body.userRequest.utterance; // 입력 발화
-    const userAction = req.body.action.params;
-
 
     console.log(question);
-    console.log(userAction);
+
 
     return res.send({
       version: "2.0",
