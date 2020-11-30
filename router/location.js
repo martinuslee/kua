@@ -24,6 +24,7 @@ apiRouter.post("/location", function (req, res) {
   const Action = req.body.action;
   const where = Action.params.sys_building;
   // console.log(typeof(where));
+  console.log(Action.params);
   console.log(where);
 
   switch (where) {
