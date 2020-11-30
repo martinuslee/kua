@@ -16,7 +16,7 @@ var location = {
 
     console.log(question);
     const Action = req.body.action;
-    const where = Action.params
+    const where = Action.params.sys_building;
     
     console.log(where);
 
