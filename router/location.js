@@ -14,7 +14,8 @@ var location = {
     const userLocation = userRequest.utterance; // 입력 발화
     const userAction = req.body.action;
     const locationStr = userAction.params;
-    const locationObj = JSON.parse(locationStr).sys_building;
+    const locationObj = JSON.parse(sys_building);
+  
     console.log(locationObj);
 
     return res.send({
