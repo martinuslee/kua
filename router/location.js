@@ -19,7 +19,7 @@ var location = {
     const where = Action.params.sys_building;
     
     console.log(where);
-
+//where json test
 
     return res.send({
       version: "2.0",
