@@ -3,12 +3,21 @@ const express = require("express");
 const apiRouter = express.Router();
 
 
-var location = {
-    농심국제관:
-      "https://map.kakao.com/link/map/농심국제관,36.60918555652231,127.28552189796417",
-    학술정보원:
-      "https://map.kakao.com/link/map/학술정보원,36.61004854502758,127.28714058017081",
-  };
+// var location = {
+//     농심국제관:
+//       "https://map.kakao.com/link/map/농심국제관,36.60918555652231,127.28552189796417",
+//     학술정보원:
+//       "https://map.kakao.com/link/map/학술정보원,36.61004854502758,127.28714058017081",
+//   };
+
+
+  let nongshim = "농심국제관";
+  let library = "학술정보원";
+  let secondST = "제2과학기술대학";
+  let firstST = "제1과학기술대학";
+
+  let maplink;
+
   //http://3.35.56.248:3000/api/location
   apiRouter.post("/location", function (req, res) {
     
@@ -17,8 +26,21 @@ var location = {
     console.log(question);
     const Action = req.body.action;
     const where = Action.params.sys_building;
-    console.log(typeof(where));
-    console.log(where);
+    // console.log(typeof(where));
+    // console.log(where);
+
+    switch(where){
+      case nongshim:
+        maplink = "https://map.kakao.com/link/map/농심국제관,36.60918555652231,127.28552189796417"
+        break;
+      case library:
+        maplink = "https://map.kakao.com/link/map/학술정보원,36.61004854502758,127.28714058017081"
+        break;
+      default:
+        maplink="https://map.kakao.com"
+        break;
+    }
+
 //where json test
 //error occuered
     return res.send({
@@ -35,7 +57,7 @@ var location = {
                 {
                   action: "webLink",
                   label: "클릭해서 바로 길 찾기",
-                  webLinkUrl: "https://map.kakao.com/link/map/농심국제관,36.60918555652231,127.28552189796417",
+                  webLinkUrl: maplink,
                 },
               ],
             },
