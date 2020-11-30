@@ -61,7 +61,7 @@ apiRouter.post("/location", function (req, res) {
       outputs: [
         {
           basicCard: {
-            title: "카카오맵을 통해 " + mapName + "까지 길찾기를 도와드릴게요!",
+            title: "카카오맵을 통해 " + where + "까지 길찾기를 도와드릴게요!",
             thumbnail: {
               imageUrl: "",
             },
