@@ -20,7 +20,7 @@ var location = {
     
     console.log(where);
 //where json test
-
+//error occuered
     return res.send({
       version: "2.0",
       template: {
