@@ -17,7 +17,7 @@ var location = {
     console.log(question);
     const Action = req.body.action;
     const where = Action.params.sys_building;
-    typeof(where);
+    console.log(typeof(where));
     console.log(where);
 //where json test
 //error occuered
