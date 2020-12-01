@@ -41,9 +41,9 @@ apiRouter.post("/location", function (req, res) {
     기부자거리: "36.60886881,	127.2891613",
   };
   //gps좌표를 구하는 함수
-  let where = "미래관";
-  let gpsPoint;
+  
   let pinPoint = () => {
+    let gpsPoint;
     for (var key in gps) {
       if (key == where) {
         gpsPoint = gps[key];
