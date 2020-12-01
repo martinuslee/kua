@@ -66,7 +66,7 @@ apiRouter.post("/location", function (req, res) {
                 action: "webLink",
                 label: "클릭해서 바로 길 찾기",
                 webLinkUrl:
-                  "https://map.kakao.com/link/map/" + where + pinPoint(),
+                  "https://map.kakao.com/link/map/" + where + "/" + pinPoint(),
               },
             ],
           },
