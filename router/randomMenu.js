@@ -2,7 +2,7 @@ const express = require("express");
 const apiRouter = express.Router();
 
 apiRouter.post("/randomMenu", function (req, res) {
-    var rand2 = Math.floor(Math.random() * 4);
+    var rand2 = Math.floor(Math.random() * 4)+1;
   
     switch (rand2) {
       case 0:

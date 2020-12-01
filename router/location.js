@@ -40,8 +40,8 @@ apiRouter.post("/location", function (req, res) {
     정문: "36.60860329,	127.2890318",
     기부자거리: "36.60886881,	127.2891613",
   };
+
   //gps좌표를 구하는 함수
-  
   let pinPoint = () => {
     let gpsPoint;
     for (var key in gps) {
