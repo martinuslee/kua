@@ -17,19 +17,22 @@ apiRouter.post("/diagnosis", function (req, res) {
               buttons: [
                 {
                   action: "webLink",
-                  label: "구글 링크(Link)",
+                  label: "Link 바로가기",
                   webLinkUrl:
                     "https://docs.google.com/forms/d/e/1FAIpQLSf0oC7eK8KmBLXJfITgk7ZJN-aB2jUcN6aBUcaLNhgpJQGYlw/viewform",
                 },
                 {
                   action: "phone",
-                  label: "선별진료소 전화",
+                  label: "선별보호소 📞",
                   phoneNumber: "044-860-1038",
                 },
+                {
+                  action: "webLink",
+                  label: "내 QR전자출입명부",
+                  webLinkUrl:
+                  "http://kko.to/KaequAjY0",
+                },
               ],
-              simpleText: {
-                text: "구글 링크 폼을 캡처후 채팅방에 사진을 올릴 수 있어요!",
-              },
             },
           },
         ],
