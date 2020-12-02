@@ -52,29 +52,47 @@ apiRouter.post("/location", function (req, res) {
     }
   };
 
-  return res.send({
-    version: "2.0",
-    template: {
-      outputs: [
-        {
-          basicCard: {
-            title: "카카오맵을 통해 " + where + "까지 길찾기를 도와드릴게요!",
-            thumbnail: {
-              imageUrl: "",
-            },
-            buttons: [
-              {
-                action: "webLink",
-                label: "클릭해서 바로 길 찾기",
-                webLinkUrl:
-                  "https://map.kakao.com/link/map/" + where + "," + pinPoint(),
+  if (where != "undefined") {
+    return res.send({
+      version: "2.0",
+      template: {
+        outputs: [
+          {
+            basicCard: {
+              title: "카카오맵을 통해 " + where + "까지 길찾기를 도와드릴게요!",
+              thumbnail: {
+                imageUrl: "",
               },
-            ],
+              buttons: [
+                {
+                  action: "webLink",
+                  label: "클릭해서 바로 길 찾기",
+                  webLinkUrl:
+                    "https://map.kakao.com/link/map/" +
+                    where +
+                    "," +
+                    pinPoint(),
+                },
+              ],
+            },
           },
-        },
-      ],
-    },
-  });
+        ],
+      },
+    });
+  } else {
+    return res.send({
+      version: "2.0",
+      template: {
+        outputs: [
+          {
+            simpleText: {
+              text: "죄송해요.. 찾으시는 위치가 어디인지 잘 모르겠어요....",
+            },
+          },
+        ],
+      },
+    });
+  }
 });
 
 module.exports = apiRouter;
