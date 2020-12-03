@@ -1,7 +1,7 @@
 const express = require("express");
 const apiRouter = express.Router();
 //라우터를 통한 기능별 서버코드 구현
-apiRouter.post("/diagnosis", function (req, res) {
+apiRouter.post("/announce", function (req, res) {
   return res.send({
     version: "2.0",
     template: {
