@@ -42,13 +42,13 @@ apiRouter.post("/diagnosis", function (req, res) {
                 },
               },
             ],
-            // "buttons": [
-            //   {
-            //     "label": "구경가기",
-            //     "action": "webLink",
-            //     "webLinkUrl": "https://namu.wiki/w/%EC%B9%B4%EC%B9%B4%EC%98%A4%ED%94%84%EB%A0%8C%EC%A6%88"
-            //   }
-            // ]
+            "buttons": [
+              {
+                "label": "학교 홈페이지 바로가기",
+                "action": "webLink",
+                "webLinkUrl": "https://sejong.korea.ac.kr"
+              }
+            ]
           },
         },
       ],
