@@ -20,6 +20,7 @@ apiRouter.post("/restaurant", function (req, res) {
                   label: "클릭해서 바로 맛집 찾기",
                   webLinkUrl:
                     "https://map.kakao.com/link/search/고려대세종주변맛집",
+                    // kakao map api를 통한 키워드검색 기능으로 주변 맛집 반환
                 },
               ],
             },

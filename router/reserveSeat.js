@@ -19,7 +19,8 @@ apiRouter.post("/reserveSeat", function (req, res) {
                 {
                   action: "webLink",
                   label: "Link Button",
-                  webLinkUrl: "http://libs.korea.ac.kr:81/",
+                  webLinkUrl: "http://libs.korea.ac.kr:81/", 
+                  //도서관 열람실 링크 81번포트로 지정되어 있어 이 링크를 반환
                 },
               ],
             },

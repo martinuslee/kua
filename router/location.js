@@ -6,12 +6,13 @@ apiRouter.post("/location", function (req, res) {
   const question = req.body.userRequest.utterance; // 입력 발화
 
   console.log(question);
-  let Action = req.body.action;
-  let where = Action.params.sys_building;
+  let Action = req.body.action; 
+  let where = Action.params.sys_building; //엔티티(키워드) 매청
   // console.log(typeof(where));
   console.log(Action.params);
   console.log(where);
-
+  
+//각 위치별 이름을 키로 좌표를 벨류로가지는 json식 객체 생성
   let gps = {
     농심국제관: "36.60918555652231,127.28552189796417",
     학술정보원: "36.61004854502758,127.28714058017081",
@@ -44,14 +45,16 @@ apiRouter.post("/location", function (req, res) {
   //gps좌표를 구하는 함수
   let pinPoint = () => {
     let gpsPoint;
+    //반복문을 통해 입력받은 엔티티와 객체의 키를 비교
     for (var key in gps) {
       if (key == where) {
-        gpsPoint = gps[key];
+        gpsPoint = gps[key];  
+        //같으면 gpsPoint 변수에 해당하는 좌표를 string타입으로 저장후 변수를 반환
         return gpsPoint;
       }
     }
   };
-
+// 입력받은 키와 엔티티가 일치할경우
   if (where != "undefined") {
     return res.send({
       version: "2.0",
@@ -60,13 +63,14 @@ apiRouter.post("/location", function (req, res) {
           {
             basicCard: {
               title: "카카오맵을 통해 " + where + "까지 길찾기를 도와드릴게요!",
+              // 입력받은 위치를 알려준다고 메시지를 출력
               thumbnail: {
                 imageUrl: "",
               },
               buttons: [
                 {
                   action: "webLink",
-                  label: "클릭해서 바로 길 찾기",
+                  label: "클릭해서 바로 길 찾기",// 카카오맵 api를 통한 입력받은 위치(찾고자하는 위치)를 지도에 표시 
                   webLinkUrl:
                     "https://map.kakao.com/link/map/" +
                     where +
@@ -79,12 +83,13 @@ apiRouter.post("/location", function (req, res) {
         ],
       },
     });
-  } else {
+  } else {  //입력받은 엔티티가 등록되지않은 이름 모를 위치일 경우
     return res.send({
       version: "2.0",
       template: {
         outputs: [
           {
+            //  어디인지 모르겠다는 메세지를 반환
             simpleText: {
               text: "죄송해요.. 찾으시는 위치가 어디인지 잘 모르겠어요....",
             },

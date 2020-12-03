@@ -2,8 +2,10 @@ const express = require("express");
 const apiRouter = express.Router();
 
 apiRouter.post("/randomMenu", function (req, res) {
-    var rand2 = Math.floor(Math.random() * 4)+1;
+    var rand2 = Math.floor(Math.random() * 4);  // 랜덤한 정수를 생성 0 ~ 3
   
+
+    // 정수 값에 따른 변수 초기화
     switch (rand2) {
       case 0:
         var msg = "오늘은 집밥같은 한식이 어떨까요?";
@@ -12,7 +14,7 @@ apiRouter.post("/randomMenu", function (req, res) {
         var choice = "https://map.kakao.com/link/search/고려대세종주변한식";
         break;
       case 1:
-        var msg = "오늘은 오랜만에 일식이 어떨까요?";
+        var msg = "오늘은 담백하게 일식이 어떨까요?";
         var image =
           "https://cdn.crowdpic.net/list-thumb/thumb_l_5DD61F29C1FA75CE55668E071EF079E7.jpg";
         var choice = "https://map.kakao.com/link/search/고려대세종주변일식";
@@ -31,6 +33,7 @@ apiRouter.post("/randomMenu", function (req, res) {
         break;
     }
   
+    //해당하는 변수를 통해 랜덤한 값 반환
     return res.send({
       version: "2.0",
       template: {
