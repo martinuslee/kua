@@ -17,7 +17,7 @@ apiRouter.post("/feedback", function (req, res) {
                   action: "webLink",
                   label: "Link Button",
                   webLinkUrl:
-                    "https://sejong.korea.ac.kr/campuslife/facilities/dining/weeklymenu",
+                    "https://docs.google.com/forms/d/e/1FAIpQLScGGT38-mdkAMY-LdRg-a2nAVWkC_ml2DCBmrVNiTSImH5N8A/viewform",
                 },
               ],
             },
