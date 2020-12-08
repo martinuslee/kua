@@ -18,7 +18,7 @@ apiRouter.post("/searchBook", function (req, res) {
                 {
                   action: "webLink",
                   label: "Link Button",
-                  webLinkUrl: "https://libs.korea.ac.kr/",
+                  webLinkUrl: "https://libs.korea.ac.kr/", //도서관 웹페이지 링크 반환
                 },
               ],
             },
