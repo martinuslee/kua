@@ -11,6 +11,7 @@ const userReserve = require('./router/reserveSeat');
 const userLocation = require('./router/location');
 const randomMenu = require('./router/randomMenu');
 const announceList = require('./router/announce');
+const userFeedback = require('./router/feedback');
 
 
 app.use(logger("dev", {}));
@@ -32,6 +33,7 @@ app.use("/api", userReserve);
 app.use("/api", userLocation);
 app.use("/api", randomMenu);
 app.use("/api", announceList);
+app.use("/api", userFeedback);
 
 // 3000번 포트로 서버 실행
 app.listen(3000, function () {
