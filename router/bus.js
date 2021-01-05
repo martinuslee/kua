@@ -50,9 +50,7 @@ const getTodayLabel = () => {
   let today = new Date().getDay();
   //let today;
   //week[today] = '일요일'; //test
-  let todayLabel;
-  week[today] === '토요일' ? todayLabel = "토요일은 운행하지 않습니다." : 
-  todayLabel = week[today];
+  let todayLabel = week[today];
 
   return todayLabel;
 }
@@ -103,7 +101,9 @@ else if(getTodayLabel() === '일요일'){
   getTime(resultCampus, rightNow,time);
   getTime(resultStation, rightNow,time2);
 }
-
+else if(getTodayLabel() === '토요일'){
+  msg1 = '토요일은 운행하지 않습니다.'
+}
 let msg1 = '캠퍼스 행 남은 시간 :' + Math.abs(time[0]) + "분 " + time[1] +" 초 뒤 출발";
 let msg2 = ('역전 행 남은 시간 :' + Math.abs(time2[0]) + "분 " + time2[1] +" 초 뒤 출발");
 let msg3 = ("to Campus : " + resultCampus + ' & To Station : ' + resultStation);
@@ -118,13 +118,9 @@ apiRouter.post("/bus", function (req, res) {
         {
           "simpleText": {
             "text": msg1 ,
-          },
-          "simpleText": {
             "text": msg2 ,
-          },
-          "simpleText": {
             "text": msg3 ,
-          }
+          },
         },
       ],
     },
