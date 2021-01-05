@@ -121,11 +121,13 @@ let msg1 = '캠퍼스 행 남은 시간 :' + Math.abs(time[0]) + "분 " + time[1
           "simpleText": {
             "text": msg1 ,
           },
+        },
+        {
           "simpleImage": {
             "imageUrl": 'https://user-images.githubusercontent.com/70839563/103677352-8432b780-4fc5-11eb-9fa2-59e2164ab2a6.jpg',
             "altText": "셔틀시간표"
+          }
         }
-        },
       ],
     },
   };
