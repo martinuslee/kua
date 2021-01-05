@@ -104,9 +104,9 @@ else if(getTodayLabel() === '일요일'){
 else if(getTodayLabel() === '토요일'){
   msg1 = '토요일은 운행하지 않습니다.'
 }
-let msg1 = '캠퍼스 행 남은 시간 :' + Math.abs(time[0]) + "분 " + time[1] +" 초 뒤 출발";
-let msg2 = ('역전 행 남은 시간 :' + Math.abs(time2[0]) + "분 " + time2[1] +" 초 뒤 출발");
-let msg3 = ("to Campus : " + resultCampus + ' & To Station : ' + resultStation);
+let msg1 = '캠퍼스 행 남은 시간 :' + Math.abs(time[0]) + "분 " + time[1] +" 초 뒤 출발"
+  + '\n' + '역전 행 남은 시간 :' + Math.abs(time2[0]) + "분 " + time2[1] +" 초 뒤 출발"
+  + '\n' + "to Campus : " + resultCampus + ' & To Station : ' + resultStation;
 
 apiRouter.post("/bus", function (req, res) {
   console.log(req.body);
@@ -118,8 +118,6 @@ apiRouter.post("/bus", function (req, res) {
         {
           "simpleText": {
             "text": msg1 ,
-            "text": msg2 ,
-            "text": msg3 ,
           },
         },
       ],
