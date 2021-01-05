@@ -109,9 +109,9 @@ else if(getTodayLabel() === '일요일'){
 else if(getTodayLabel() === '토요일'){
   msg1 = '토요일은 운행하지 않습니다.'
 }
-let msg1 = '캠퍼스 행 남은 시간 :' + Math.abs(time[0]) + "분 " + time[1] +" 초 뒤 출발"
-  + '\n' + '역전 행 남은 시간 :' + Math.abs(time2[0]) + "분 " + time2[1] +" 초 뒤 출발"
-  + '\n' + "to Campus : " + resultCampus + ' & To Station : ' + resultStation;
+let msg1 = '🏫 :' + Math.abs(time[0]) + "분 " + time[1] +" 초 후 출발"
+  + '\n' + '🚉 :' + Math.abs(time2[0]) + "분 " + time2[1] +" 초 후 출발"
+  + '\n' + "🏫 : " + resultCampus + ' & 🚉 : ' + resultStation;
 
   const responseBody = {
     version: "2.0",
