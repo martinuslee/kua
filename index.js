@@ -2,6 +2,7 @@ const express = require("express");
 const logger = require("morgan");
 const bodyParser = require("body-parser");
 const app = express();//express framework로 서버구성
+//const moment = require('moment');
 //라우터에 존재하는 기능들 불러오기
 const userMenu = require('./router/menu');
 const userDiagnosis = require('./router/diagnosis');
@@ -12,6 +13,7 @@ const userLocation = require('./router/location');
 const randomMenu = require('./router/randomMenu');
 const announceList = require('./router/announce');
 const userFeedback = require('./router/feedback');
+const bustime = require('./router/bus');
 
 
 app.use(logger("dev", {}));
@@ -34,9 +36,10 @@ app.use("/api", userLocation);
 app.use("/api", randomMenu);
 app.use("/api", announceList);
 app.use("/api", userFeedback);
+app.use("/api", bustime);
+
 
 // 3000번 포트로 서버 실행
 app.listen(3000, function () {
-  console.log("Example skill server listening on port 3000!");
+  console.log("skill server listening on port 3000!");
 });
-

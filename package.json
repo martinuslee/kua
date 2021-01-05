@@ -10,10 +10,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "axios": "0.21.0",
+    "axios": "0.21.1",
     "body-parser": "1.19.0",
+    "date-utils": "1.2.21",
     "dialogflow-fulfillment": "0.6.1",
     "express": "4.17.1",
+    "moment": "2.29.1",
     "morgan": "1.10.0"
   },
   "devDependencies": {
