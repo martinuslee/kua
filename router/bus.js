@@ -118,9 +118,13 @@ apiRouter.post("/bus", function (req, res) {
         {
           "simpleText": {
             "text": msg1 ,
-            "text": msg2 ,
-            "text": msg3 ,
           },
+          "simpleText": {
+            "text": msg2 ,
+          },
+          "simpleText": {
+            "text": msg3 ,
+          }
         },
       ],
     },
