@@ -50,7 +50,8 @@ const sunToCampus = [
 
 const getTodayLabel = () => {
   let week = new Array('일요일','월요일','화요일','수요일','목요일','금요일','토요일');
-  let today = new Date().getDay();
+  const nDate = new Date().toLocaleString("ko-KR", {timeZone: "Asia/Seoul"});
+  let today = nDate.getDay();
   //let today;
   //week[today] = '일요일'; //test
   let todayLabel = week[today];
@@ -63,7 +64,7 @@ const getTodayLabel = () => {
 // 큰시간 - 현재 시간을 하면 남은 시간을 구할 수 있다.
 //   ex) 현재시간 18:52:00, 현재시간 다음 시간 = 19:10:00 , 차이는 diff로 구할수 있다.
 
-const rightNow = moment().format('HH:mm:ss'); //현재시간 가져오기 Ok
+const rightNow = moment().tz("Asia/Seoul").format('HH:mm:ss'); //현재시간 가져오기 Ok
 console.log("현재 시간: " + rightNow);
 console.log(getTodayLabel());
 // 배열을 돌면서 시간 구하기
