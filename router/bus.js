@@ -111,7 +111,7 @@ else if(getTodayLabel() === '토요일'){
 }
 let msg1 = '🏫 :' + Math.abs(time[0]) + "분 " + time[1] +" 초 후 출발"
   + '\n' + '🚉 :' + Math.abs(time2[0]) + "분 " + time2[1] +" 초 후 출발"
-  + '\n' + "To the Campus : " + resultCampus + ' & To the Station : ' + resultStation;
+  + '\n' + "To the Campus : " + resultCampus +"\n" +'To the Station : ' + resultStation;
 
   const responseBody = {
     version: "2.0",
