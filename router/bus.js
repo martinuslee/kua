@@ -2,6 +2,9 @@ const express = require("express");
 const apiRouter = express.Router();
 const moment = require('moment');
 
+apiRouter.post("/bus", function (req, res) {
+  
+
 const toCampus = [
   "08:30:00","08:40:00","08:50:00","08:55:00","09:00:00",
   "09:10:00","09:20:00","09:30:00","09:40:00","09:50:00",
@@ -107,9 +110,6 @@ else if(getTodayLabel() === '토요일'){
 let msg1 = '캠퍼스 행 남은 시간 :' + Math.abs(time[0]) + "분 " + time[1] +" 초 뒤 출발"
   + '\n' + '역전 행 남은 시간 :' + Math.abs(time2[0]) + "분 " + time2[1] +" 초 뒤 출발"
   + '\n' + "to Campus : " + resultCampus + ' & To Station : ' + resultStation;
-
-apiRouter.post("/bus", function (req, res) {
-  console.log(req.body);
 
   const responseBody = {
     version: "2.0",
