@@ -63,8 +63,8 @@ const getTodayLabel = () => {
 //   ex) 현재시간 18:52:00, 현재시간 다음 시간 = 19:10:00 , 차이는 diff로 구할수 있다.
 
 const rightNow = moment().format('HH:mm:ss'); //현재시간 가져오기 Ok
-//console.log("현재 시간: " + rightNow);
-//console.log(getTodayLabel());
+console.log("현재 시간: " + rightNow);
+console.log(getTodayLabel());
 // 배열을 돌면서 시간 구하기
 const isBetween = (arr) =>{
    for(let i =0; i < arr.length ;i++){
