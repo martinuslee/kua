@@ -5,7 +5,6 @@ require('moment-timezone');
 moment.tz.setDefault('Asia/Seoul');
 
 apiRouter.post("/bus", function (req, res) {
-  
 
 const toCampus = [
   "08:30:00","08:40:00","08:50:00","08:55:00","09:00:00",
@@ -53,10 +52,8 @@ const sunToCampus = [
 const getTodayLabel = () => {
   let week = new Array('일요일','월요일','화요일','수요일','목요일','금요일','토요일');
   let today = new Date().getDay();
-  //let today;
   //week[today] = '일요일'; //test
   let todayLabel = week[today];
-
   return todayLabel;
 }
 
@@ -66,8 +63,8 @@ const getTodayLabel = () => {
 //   ex) 현재시간 18:52:00, 현재시간 다음 시간 = 19:10:00 , 차이는 diff로 구할수 있다.
 
 const rightNow = moment().format('HH:mm:ss'); //현재시간 가져오기 Ok
-console.log("현재 시간: " + rightNow);
-console.log(getTodayLabel());
+//console.log("현재 시간: " + rightNow);
+//console.log(getTodayLabel());
 // 배열을 돌면서 시간 구하기
 const isBetween = (arr) =>{
    for(let i =0; i < arr.length ;i++){
@@ -94,7 +91,7 @@ const getTime =(depart, now, arr)=> {
 let resultCampus = "default";
 let resultStation = "default"; 
 
-if(getTodayLabel() !== '일요일'){
+if(getTodayLabel() !== '일요일' && getTodayLabel() !== '토요일'){
   resultCampus = isBetween(toCampus);
   resultStation = isBetween(toStation);
   getTime(resultCampus, rightNow,time);
@@ -105,13 +102,13 @@ if(getTodayLabel() !== '일요일'){
   getTime(resultCampus, rightNow,time);
   getTime(resultStation, rightNow,time2);
 }
-let msg1 = '';
-getTodayLabel() !== '토요일' ? 
-  (msg1 = '🏫 :' + Math.abs(time[0]) + "분 " + time[1] +" 초 후 출발"
+let msg1 = '🏫 :' + Math.abs(time[0]) + "분 " + time[1] +" 초 후 출발"
 + '\n' + '🚉 :' + Math.abs(time2[0]) + "분 " + time2[1] +" 초 후 출발"
-+ '\n' + "To the Campus : " + resultCampus +"\n" +'To the Station : ' + resultStation)
-: msg1 = '토요일은 운행하지 않습니다.'
++ '\n' + "To the Campus : " + resultCampus +"\n" +'To the Station : ' + resultStation;
 
+getTodayLabel() === '토요일' ? 
+  msg1 = '토요일은 운행하지 않습니다.': '';
+ 
   const responseBody = {
     version: "2.0",
     template: {
