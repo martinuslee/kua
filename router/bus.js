@@ -51,8 +51,8 @@ const sunToCampus = [
 
 const getTodayLabel = () => {
   let week = new Array('일요일','월요일','화요일','수요일','목요일','금요일','토요일');
-  let today = new Date().getDay();
-  //week[today] = '일요일'; //test
+  let today = new Date(Date.UTC(0,0,0,9,0,0)).getDay();
+  // week[today] = '일요일'; //test
   let todayLabel = week[today];
   return todayLabel;
 }
