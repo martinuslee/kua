@@ -99,19 +99,18 @@ if(getTodayLabel() !== '일요일'){
   resultStation = isBetween(toStation);
   getTime(resultCampus, rightNow,time);
   getTime(resultStation, rightNow,time2);
-}
-else if(getTodayLabel() === '일요일'){
+} else if(getTodayLabel() === '일요일'){
   resultCampus = isBetween(sunToCampus);
   resultStation = isBetween(sunToStation);
   getTime(resultCampus, rightNow,time);
   getTime(resultStation, rightNow,time2);
 }
-else if(getTodayLabel() === '토요일'){
-  msg1 = '토요일은 운행하지 않습니다.'
-}
-let msg1 = '🏫 :' + Math.abs(time[0]) + "분 " + time[1] +" 초 후 출발"
-  + '\n' + '🚉 :' + Math.abs(time2[0]) + "분 " + time2[1] +" 초 후 출발"
-  + '\n' + "To the Campus : " + resultCampus +"\n" +'To the Station : ' + resultStation;
+let msg1 = '';
+getTodayLabel() === '토요일' ? 
+  (msg1 = '🏫 :' + Math.abs(time[0]) + "분 " + time[1] +" 초 후 출발"
++ '\n' + '🚉 :' + Math.abs(time2[0]) + "분 " + time2[1] +" 초 후 출발"
++ '\n' + "To the Campus : " + resultCampus +"\n" +'To the Station : ' + resultStation)
+: msg1 = '토요일은 운행하지 않습니다.'
 
   const responseBody = {
     version: "2.0",
