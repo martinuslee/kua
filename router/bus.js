@@ -49,13 +49,8 @@ const sunToCampus = [
   '20:40:00','21:10:00','21:30:00'
 ];
 
-const getTodayLabel = () => {
-  let week = new Array('일요일','월요일','화요일','수요일','목요일','금요일','토요일');
-  let today = new Date(Date.UTC(0,0,0,9,0,0)).getDay();
-  // week[today] = '일요일'; //test
-  let todayLabel = week[today];
-  return todayLabel;
-}
+let todayLabel = moment().day();
+//0: 일, 1: 월, 2: 화. 3: 수, 4: 목, 5: 금, 6: 토
 
 // 현재 시간을 가져온다. 
 // 가져온 시간보다 큰 시간을 찾는다.
@@ -64,7 +59,7 @@ const getTodayLabel = () => {
 
 const rightNow = moment().format('HH:mm:ss'); //현재시간 가져오기 Ok
 console.log("현재 시간: " + rightNow);
-console.log(getTodayLabel());
+console.log(todayLabel);
 // 배열을 돌면서 시간 구하기
 const isBetween = (arr) =>{
    for(let i =0; i < arr.length ;i++){
@@ -91,12 +86,12 @@ const getTime =(depart, now, arr)=> {
 let resultCampus = "default";
 let resultStation = "default"; 
 
-if(getTodayLabel() !== '일요일' && getTodayLabel() !== '토요일'){
+if(todayLabel > 0 && todayLabel < 7){
   resultCampus = isBetween(toCampus);
   resultStation = isBetween(toStation);
   getTime(resultCampus, rightNow,time);
   getTime(resultStation, rightNow,time2);
-} else if(getTodayLabel() === '일요일'){
+} else if(todayLabel === 0){
   resultCampus = isBetween(sunToCampus);
   resultStation = isBetween(sunToStation);
   getTime(resultCampus, rightNow,time);
@@ -106,7 +101,7 @@ let msg1 = '🏫 :' + Math.abs(time[0]) + "분 " + time[1] +" 초 후 출발"
 + '\n' + '🚉 :' + Math.abs(time2[0]) + "분 " + time2[1] +" 초 후 출발"
 + '\n' + "To the Campus : " + resultCampus +"\n" +'To the Station : ' + resultStation;
 
-getTodayLabel() === '토요일' ? 
+todayLabel === 6 ? 
   msg1 = '토요일은 운행하지 않습니다.': '';
  
   const responseBody = {
