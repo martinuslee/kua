@@ -82,6 +82,7 @@ let todayLabel = moment().day();
 //   ex) 현재시간 18:52:00, 현재시간 다음 시간 = 19:10:00 , 차이는 diff로 구할수 있다.
 
 const rightNow = moment().format('HH:mm:ss'); //현재시간 가져오기 Ok
+
 console.log("현재 시간: " + rightNow);
 console.log(todayLabel);
 // 배열을 돌면서 시간 구하기
@@ -89,6 +90,7 @@ const isBetween = (arr) =>{
    for(let i =0; i < arr.length ;i++){
     if(rightNow>arr[arr.length-1]){
       var find = arr[0];
+      break;
     } else if(arr[i]>rightNow){
        var find = arr[i];
        break;
@@ -124,8 +126,37 @@ let msg1 = '🏫 :' + Math.abs(time[0]) + "분 " + time[1] +" 초 후 출발"
 + '\n' + '🚉 :' + Math.abs(time2[0]) + "분 " + time2[1] +" 초 후 출발"
 + '\n' + "To the Campus : " + resultCampus +"\n" +'To the Station : ' + resultStation;
 
-todayLabel === 6 || todayLabel === 5 ? //목요일 또는 토요일
-  msg1 = '금일은 운행하지 않습니다.': '';
+function isOver(arr){
+  if(rightNow> arr[arr.length-1]){
+    msg1='금일 운행이 모두 종료 되었습니다.';
+  }
+  else
+    msg1;
+}  
+
+switch(todayLabel){
+  case 0:
+    isOver(SunwinterToCam);
+    isOver(SunwinterToStation);
+    isOver(sunToCampus);isOver(sunToStation);
+    break;
+  case 1:
+  case 2:
+  case 3:
+  case 4:
+    isOver(winterToCam);isOver(winterToStation);
+      break;
+  case 5:
+    //isOver(toCampus);isOver(toStation);
+   //isOver(winterToCam);isOver(winterToStation);
+    msg1 = '금일은 운행하지 않습니다.'
+      break;
+  case 6:
+    msg1 = '금일은 운행하지 않습니다.'
+      break;
+  default:
+    break;
+}
  
   const responseBody = {
     version: "2.0",
