@@ -124,7 +124,7 @@ let msg1 = '🏫 :' + Math.abs(time[0]) + "분 " + time[1] +" 초 후 출발"
 + '\n' + '🚉 :' + Math.abs(time2[0]) + "분 " + time2[1] +" 초 후 출발"
 + '\n' + "To the Campus : " + resultCampus +"\n" +'To the Station : ' + resultStation;
 
-todayLabel === 6 || 5 ? //목요일 또는 토요일
+todayLabel === 6 || todayLabel === 5 ? //목요일 또는 토요일
   msg1 = '금일은 운행하지 않습니다.': '';
  
   const responseBody = {
