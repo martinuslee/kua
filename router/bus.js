@@ -4,7 +4,6 @@ const moment = require('moment');
 require('moment-timezone');
 moment.tz.setDefault('Asia/Seoul');
 
-apiRouter.post("/bus", function (req, res) {
 
 const toCampus = [
   "08:30:00","08:40:00","08:50:00","08:55:00","09:00:00",
@@ -49,6 +48,31 @@ const sunToCampus = [
   '20:40:00','21:10:00','21:30:00'
 ];
 
+const winterToCam = [
+  '08:30:00','08:50:00','09:05:00',
+  '12:20:00','12:50:00','15:20:00',
+  '16:20:00','17:20:00'
+];
+const winterToStation = [
+  '12:10:00','12:40:00','15:10:00',
+  '16:10:00','17:10:00'
+];
+const SunwinterToCam = [
+  '16:40:00','17:10:00','17:30:00',
+  '17:50:00','18:10:00','18:50:00',
+  '19:30:00','20:00:00','20:25:00',
+  '20:40:00','21:10:00','21:30:00',
+];
+const SunwinterToStation = [
+  '17:00:00','17:20:00',
+  '17:40:00','18:00:00','18:40:00',
+  '19:20:00','19:50:00','20:15:00',
+  '20:30:00','21:00:00','21:20:00',
+];
+
+apiRouter.post("/bus", function (req, res) {
+
+
 let todayLabel = moment().day();
 //0: 일, 1: 월, 2: 화. 3: 수, 4: 목, 5: 금, 6: 토
 
@@ -63,14 +87,13 @@ console.log(todayLabel);
 // 배열을 돌면서 시간 구하기
 const isBetween = (arr) =>{
    for(let i =0; i < arr.length ;i++){
-     if(arr[i]>rightNow){
+    if(rightNow>arr[arr.length-1]){
+      var find = arr[0];
+    } else if(arr[i]>rightNow){
        var find = arr[i];
        break;
-     }
-      if(rightNow>arr[arr.length-1]){
-        var find = arr[0];
-      }
-   }
+      } 
+    }
    return find;
 };
 const time = [''];
@@ -86,17 +109,17 @@ const getTime =(depart, now, arr)=> {
 let resultCampus = "default";
 let resultStation = "default"; 
 
-if(todayLabel > 0 && todayLabel < 7){
-  resultCampus = isBetween(toCampus);
-  resultStation = isBetween(toStation);
-  getTime(resultCampus, rightNow,time);
-  getTime(resultStation, rightNow,time2);
+if(todayLabel > 0 && todayLabel < 6){
+  resultCampus = isBetween(winterToCam);
+  resultStation = isBetween(winterToStation);
 } else if(todayLabel === 0){
-  resultCampus = isBetween(sunToCampus);
-  resultStation = isBetween(sunToStation);
-  getTime(resultCampus, rightNow,time);
-  getTime(resultStation, rightNow,time2);
+  resultCampus = isBetween(SunwinterToCam);
+  resultStation = isBetween(SunwinterToStation);
 }
+
+getTime(resultCampus, rightNow,time);
+getTime(resultStation, rightNow,time2);
+
 let msg1 = '🏫 :' + Math.abs(time[0]) + "분 " + time[1] +" 초 후 출발"
 + '\n' + '🚉 :' + Math.abs(time2[0]) + "분 " + time2[1] +" 초 후 출발"
 + '\n' + "To the Campus : " + resultCampus +"\n" +'To the Station : ' + resultStation;
@@ -110,7 +133,7 @@ todayLabel === 6 ?
       outputs: [
         {
           "simpleText": {
-            "text": msg1 ,
+            "text": "계절학기 셔틀 운행"+"\n"+msg1 ,
           },
         },
         {
