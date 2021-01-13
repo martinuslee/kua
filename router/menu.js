@@ -17,7 +17,7 @@ apiRouter.post("/menu", function (req, res) {
                   action: "webLink",
                   label: "Link Button",
                   webLinkUrl:
-                    "https://sejong.korea.ac.kr/campuslife/facilities/dining/weeklymenu",
+                    "http://portal.korea.ac.kr/common/Download.kpd?filePath=/files/groupware/upload/202101/202101041028070725_%EA%B5%90%EC%A7%81%EC%9B%90%EC%8B%9D%EB%8B%B9%20%EC%A3%BC%EA%B0%84%20%EB%A9%94%EB%89%B4.pdf&fileName=%EA%B5%90%EC%A7%81%EC%9B%90%EC%8B%9D%EB%8B%B9%20%EC%A3%BC%EA%B0%84%20%EB%A9%94%EB%89%B4.pdf",
                 },
               ],
             },
