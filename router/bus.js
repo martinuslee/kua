@@ -112,11 +112,11 @@ let resultCampus = "default";
 let resultStation = "default"; 
 
 if(todayLabel > 0 && todayLabel < 5){
-  resultCampus = isBetween(winterToCam);
-  resultStation = isBetween(winterToStation);
+  resultCampus = isBetween(toCampus);
+  resultStation = isBetween(toStation);
 } else if(todayLabel === 0){
-  resultCampus = isBetween(SunwinterToCam);
-  resultStation = isBetween(SunwinterToStation);
+  resultCampus = isBetween(sunToCampus);
+  resultStation = isBetween(sunToStation);
 }
 
 getTime(resultCampus, rightNow,time);
@@ -136,15 +136,15 @@ function isOver(arr){
 
 switch(todayLabel){
   case 0:
-    isOver(SunwinterToCam);
-    isOver(SunwinterToStation);
-    isOver(sunToCampus);isOver(sunToStation);
+    isOver(sunToCampus);
+    isOver(sunToStation);
+    isOver(toCampus);isOver(toStation);
     break;
   case 1:
   case 2:
   case 3:
   case 4:
-    isOver(winterToCam);isOver(winterToStation);
+    isOver(toCampus);isOver(toStation);
       break;
   case 5:
     //isOver(toCampus);isOver(toStation);
@@ -164,12 +164,12 @@ switch(todayLabel){
       outputs: [
         {
           "simpleText": {
-            "text": "계절학기 셔틀 운행"+"\n"+msg1 ,
+            "text": "21년 1학기 셔틀 운행"+"\n"+msg1 ,
           },
         },
         {
           "simpleImage": {
-            "imageUrl": 'https://user-images.githubusercontent.com/70839563/104166739-976ada80-543e-11eb-82ac-f435260f6e93.jpg',
+            "imageUrl": 'https://user-images.githubusercontent.com/70839563/109125875-f0dd5d80-778f-11eb-93db-5ae37863cfd3.jpg',
             "altText": "셔틀시간표"
           }
         }
