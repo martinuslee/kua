@@ -227,21 +227,23 @@ apiRouter.post("/bus", function (req, res) {
     }
     return find;
   };
+
   const time = [""];
   const time2 = [""];
+
   const getTime = (depart, now, arr) => {
     let ms = moment(depart, "HH:mm:ss").diff(moment(now, "HH:mm:ss"));
     let d = moment.duration(ms).asMinutes();
     let min = Math.floor(d);
     let sec = ((d - min) * 60).toFixed(0);
-    arr[0] = min;
-    arr[1] = sec;
+    arr[0] = min; //분
+    arr[1] = sec; //초
     return arr;
   };
   let resultCampus = "default";
   let resultStation = "default";
 
-  if (todayLabel > 0 && todayLabel < 5) {
+  if (todayLabel > 0 && todayLabel < 6) {
     resultCampus = isBetween(toCampus);
     resultStation = isBetween(toStation);
   } else if (todayLabel === 0) {
