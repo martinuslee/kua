@@ -2,11 +2,11 @@ const express = require("express");
 const apiRouter = express.Router();
 const axios = require("axios"); //html로 웹자료를 get
 const cheerio = require("cheerio"); //html을 JS로 변환
+let $href = [];
 
 apiRouter.post("/menu", function (req, res) {
   console.log(req.body);
 
-  let $href = [];
   axios
     .get(`https://sejong.korea.ac.kr/campuslife/facilities/dining/weeklymenu`)
     .then((response) => {
@@ -18,7 +18,7 @@ apiRouter.post("/menu", function (req, res) {
       $(links).each((i, link) => {
         //console.log(i + ' : ' + $(link).text() +': '+$(link).attr('href')+ '\n');
         if ($(link).text() === "교직원식당 주간 메뉴")
-          $href.push($(link).attr("href"));
+          $href=($(link).attr("href"));
       });
       console.log("https://sejong.korea.ac.kr" + $href);
     });
