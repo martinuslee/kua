@@ -1,4 +1,7 @@
 # KUA (Korea University Assistant)
+
+Kakaotalk (mobile messenger) A.I chatbot application for Korea university freshmen and international students.
+
 ## kakao-nodejs skill server
 kakao chat-bot nodejs server app
 
