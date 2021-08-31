@@ -86,6 +86,7 @@ const toStation = [
   "21:40:00"
 ];
 // 일요일 시간표
+// 학교 (역전행)
 const sunToStation = [
   "17:00:00",
   "17:30:00",
@@ -95,6 +96,7 @@ const sunToStation = [
   "20:10:00",
   "21:00:00",
 ];
+// 역뒤(학교행)
 const sunToCampus = [
   "16:40:00",
   "17:10:00",
@@ -265,7 +267,7 @@ apiRouter.post("/bus", function (req, res) {
       outputs: [
         {
           simpleText: {
-            text: "21년 1학기 셔틀 운행" + "\n" + msg1,
+            text: "학생 셔틀 버스 운행 시간표" + "\n" + msg1,
           },
         },
         {
