@@ -273,7 +273,7 @@ apiRouter.post("/bus", function (req, res) {
         {
           simpleImage: {
             imageUrl:
-              "./src/img/bus_schedule.jpeg",
+              "https://github.com/martinuslee/kua/blob/master/src/img/bus_schedule.jpeg?raw=true",
             altText: "셔틀시간표",
           },
         },
