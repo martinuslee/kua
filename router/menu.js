@@ -16,10 +16,13 @@ apiRouter.post("/menu", function (req, res) {
       links = $("a"); //<a> 태그 전부 가져옴
       $(links).each((i, link) => {
         //console.log(i + ' : ' + $(link).text() +': '+$(link).attr('href')+ '\n');
-        if ($(link).text() === "교직원식당 주간 메뉴") //a 태그에 텍스트가 교직원식당 주간 메뉴인 부분 찾기
+        if ($(link).text() === "교직원식당 주간 메뉴"){ //a 태그에 텍스트가 교직원식당 주간 메뉴인 부분 찾기
           $href=($(link).attr("href")); // 찾았으면 href 속성 링크 가져옴
+        } else if($(link).text() == "학생식당 주간 메뉴"){
+          $href_studnet=($(link).attr("href")); // 찾았으면 href 속성 링크 가져옴
+        }
       });
-      console.log("https://sejong.korea.ac.kr" + $href);
+      console.log($href + '\n' + $href_student);
     });
 
   const responseBody = {
@@ -37,8 +40,13 @@ apiRouter.post("/menu", function (req, res) {
             buttons: [
               {
                 action: "webLink",
-                label: "Link Button",
-                webLinkUrl: "https://sejong.korea.ac.kr" + $href,
+                label: "교직원 식당",
+                webLinkUrl: $href,
+              },
+              {
+                action: "webLink",
+                label: "진리관 학생식당",
+                webLinkUrl: $href,
               },
             ],
           },
