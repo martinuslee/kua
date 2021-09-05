@@ -4,6 +4,7 @@ const axios = require("axios"); //html로 웹자료를 get
 const cheerio = require("cheerio"); //html을 JS로 변환
 
 let $href = [];
+let $href_student = [];
 
 apiRouter.post("/menu", function (req, res) {
   //console.log(req.body);
@@ -19,7 +20,7 @@ apiRouter.post("/menu", function (req, res) {
         if ($(link).text() === "교직원식당 주간 메뉴"){ //a 태그에 텍스트가 교직원식당 주간 메뉴인 부분 찾기
           $href=($(link).attr("href")); // 찾았으면 href 속성 링크 가져옴
         } else if($(link).text() == "학생식당 주간 메뉴"){
-          $href_studnet=($(link).attr("href")); // 찾았으면 href 속성 링크 가져옴
+          $href_student=($(link).attr("href")); // 찾았으면 href 속성 링크 가져옴
         }
       });
       console.log($href + '\n' + $href_student);
@@ -31,7 +32,7 @@ apiRouter.post("/menu", function (req, res) {
       outputs: [
         {
           basicCard: {
-            title: "금주의 교직원 식당 식단표입니다",
+            title: "금주의 식당 식단표입니다",
             description: "아래 버튼을 클릭해서 확인해주세요!",
             thumbnail: {
               imageUrl:
@@ -46,7 +47,7 @@ apiRouter.post("/menu", function (req, res) {
               {
                 action: "webLink",
                 label: "진리관 학생식당",
-                webLinkUrl: $href,
+                webLinkUrl: "https://sejong.korea.ac.kr/"+$href_student,
               },
             ],
           },

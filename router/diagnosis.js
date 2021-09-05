@@ -8,8 +8,8 @@ apiRouter.post("/diagnosis", function (req, res) {
         outputs: [
           {
             basicCard: {
-              title: "코로나-19 자가진단",
-              description: "COVID-19 Self-diagnosis",
+              title: "코로나-19 공지와 주변 선별진료소",
+              description: "COVID-19 Announcement & triage room information",
               thumbnail: {
                 imageUrl:
                   "https://pusyap.com/wp-content/uploads/2020/07/%EC%B2%B4%EC%98%A8%EC%B8%A1%EC%A0%95_%EC%BD%94%EB%A1%9C%EB%82%9819jpg.jpg",
@@ -17,16 +17,16 @@ apiRouter.post("/diagnosis", function (req, res) {
               buttons: [
                 {
                   action: "webLink",
-                  label: "Link 바로가기",
+                  label: "교내 코로나 공지 (확진자 동선)",
                   webLinkUrl:
-                    "https://docs.google.com/forms/d/e/1FAIpQLSf0oC7eK8KmBLXJfITgk7ZJN-aB2jUcN6aBUcaLNhgpJQGYlw/viewform",
+                    "https://sejong.korea.ac.kr/user/boardList.do?handle=102914&siteId=kr&id=kr_050108010000",
                     // 구글폼 웹링크 전달
                 },
                 {
-                  action: "phone",
-                  label: "선별보호소 📞",
-                  phoneNumber: "044-860-1038",
-                  // 전화로 바로 가도록 해당 값 반환
+                  action: "webLink",
+                  label: "가까운 선별진료소 위치💉",
+                  webLinkUrl:
+                  "https://map.kakao.com/link/search/선별진료소",
                 },
                 {
                   action: "webLink",
