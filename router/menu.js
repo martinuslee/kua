@@ -42,12 +42,12 @@ apiRouter.post("/menu", function (req, res) {
               {
                 action: "webLink",
                 label: "교직원 식당",
-                webLinkUrl: $href,
+                webLinkUrl: "https://sejong.korea.ac.kr" + $href,
               },
               {
                 action: "webLink",
                 label: "진리관 학생식당",
-                webLinkUrl: "https://sejong.korea.ac.kr/"+$href_student,
+                webLinkUrl: "https://sejong.korea.ac.kr"+$href_student,
               },
             ],
           },

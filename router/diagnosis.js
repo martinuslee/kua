@@ -17,7 +17,7 @@ apiRouter.post("/diagnosis", function (req, res) {
               buttons: [
                 {
                   action: "webLink",
-                  label: "교내 코로나 공지 (확진자 동선)",
+                  label: "교내 코로나 확진자 공지",
                   webLinkUrl:
                     "https://sejong.korea.ac.kr/user/boardList.do?handle=102914&siteId=kr&id=kr_050108010000",
                     // 구글폼 웹링크 전달
@@ -29,12 +29,18 @@ apiRouter.post("/diagnosis", function (req, res) {
                   "https://map.kakao.com/link/search/선별진료소",
                 },
                 {
-                  action: "webLink",
-                  label: "내 QR전자출입명부",
-                  webLinkUrl:
-                  "http://kko.to/KaequAjY0",
-                  // 카카오 인증을 통한 전자출입명부 QR코드 반환
+                  action: "phone",
+                  label: "교내 선별보호소 전화📞",
+                  phoneNumber: "044-860-1038",
+                  // 전화로 바로 가도록 해당 값 반환
                 },
+                // {
+                //   action: "webLink",
+                //   label: "내 QR전자출입명부",
+                //   webLinkUrl:
+                //   "http://kko.to/KaequAjY0",
+                //   // 카카오 인증을 통한 전자출입명부 QR코드 반환
+                // },
               ],
             },
           },
