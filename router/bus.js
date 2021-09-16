@@ -78,7 +78,7 @@ const toStation = [
   "18:00:00",
   "18:30:00",
   "19:00:00",
-  "19:50:00",
+  "19:30:00",
   "20:00:00",
   "20:30:00",
   "20:50:00",
@@ -182,7 +182,13 @@ apiRouter.post("/bus", function (req, res) {
 
   const time = [""];
   const time2 = [""];
-
+/**
+ * 
+ * @param {*} depart 출발시간
+ * @param {*} now 현재시간
+ * @param {*} arr 시간표 배열
+ * @returns 
+ */
   const getTime = (depart, now, arr) => {
     let ms = moment(depart, "HH:mm:ss").diff(moment(now, "HH:mm:ss"));
     let d = moment.duration(ms).asMinutes();
@@ -203,26 +209,26 @@ apiRouter.post("/bus", function (req, res) {
     resultStation = isBetween(sunToStation);
   }
 
-  getTime(resultCampus, rightNow, time);
-  getTime(resultStation, rightNow, time2);
+  getTime(resultCampus, rightNow, time); //학교행 역전에서 타는 버스
+  getTime(resultStation, rightNow, time2); // 역전행 학교에서 타는 버스
 
   let msg1 =
-    "🏫 :" +
+    "🏫 학교행 : " +
     Math.abs(time[0]) +
     "분 " +
     time[1] +
     " 초 후 출발" +
     "\n" +
-    "🚉 :" +
+    "🚉 조치원역행 : " +
     Math.abs(time2[0]) +
     "분 " +
     time2[1] +
     " 초 후 출발" +
     "\n" +
-    "To the Campus : " +
+    "🏫 To the Campus : " +
     resultCampus +
     "\n" +
-    "To the Station : " +
+    "🚉 To the Station : " +
     resultStation;
 
   function isOver(arr) {
