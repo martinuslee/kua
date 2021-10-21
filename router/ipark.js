@@ -3,9 +3,9 @@ const apiRouter = express.Router();
 
 const axios = require("axios"); //html로 웹자료를 get
 
-let members = "";
 apiRouter.post("/ipark", function (req, res) {
   const liveData = "http://cxz3619.pythonanywhere.com/liveData";
+  let members = "";
   axios.get(liveData).then((response) => {
     // console.log(response);
     const {data} = response;
